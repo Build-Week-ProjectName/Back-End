@@ -84,7 +84,7 @@ typings/
 dist
 
 # Configuration / secrets
-
+.secrets
 # config/
 
 # Gatsby files

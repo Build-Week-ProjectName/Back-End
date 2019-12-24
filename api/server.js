@@ -9,6 +9,8 @@ const server = express();
 
 const authRouter = require("../auth/auth-router.js");
 const usersRouter = require("../users/users-router.js");
+const menuRouter = require("../menu/menu-router");
+const trucksRouter = require("../trucks/trucks-router");
 
 server.use(morgan("dev"));
 server.use(helmet());
@@ -17,6 +19,8 @@ server.use(cors());
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", usersRouter);
+server.use("/api/", menuRouter);
+server.use("/api/", trucksRouter);
 
 server.get("/", (req, res) => {
   res.send("Backend is responding");

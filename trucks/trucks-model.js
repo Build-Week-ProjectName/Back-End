@@ -1,5 +1,3 @@
-const db = require("../config/dbConfig");
-
 module.exports = {
   find,
   findById,
@@ -9,31 +7,29 @@ module.exports = {
 };
 
 function find() {
-  return db("menu");
+  return db("trucks");
 }
 
 function findById(id) {
-  return db("menu")
+  return db("trucks")
     .where({ id })
     .first();
 }
 
-function add(list) {
-  return db("menu")
-    .insert(listData)
-    .then(ids => {
-      return findById(ids[0]);
-    });
+async function add(trucks) {
+  const [id] = await db("trucks").insert(trucks);
+
+  return findById(id);
 }
 
 function update(id, changes) {
-  return db("menu")
+  return db("trucks")
     .where({ id })
     .update(changes);
 }
 
 function remove(id) {
-  return db("menu")
+  return db("trucks")
     .where("id", id)
     .del();
 }

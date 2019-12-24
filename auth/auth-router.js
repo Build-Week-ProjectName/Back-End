@@ -47,7 +47,11 @@ function genToken(user) {
   const payload = {
     userid: user.id,
     username: user.username,
-    roles: ["Owner"]
+    role: ["Diner"],
+
+    operatorid: operator.id,
+    username: operator.username,
+    role: ["Operator"]
   };
 
   const options = { expiresIn: "1h" };

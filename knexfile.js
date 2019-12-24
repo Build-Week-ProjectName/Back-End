@@ -11,13 +11,13 @@ module.exports = {
       afterCreate: (connection, done) => {
         connection.run("PRAGMA foreign_keys- ON", done);
       }
+    },
+    migrations: {
+      directory: "./database/migrations"
+    },
+    seeds: {
+      directory: "./database/seeds"
     }
-  },
-  migrations: {
-    directory: "./database/migrations"
-  },
-  seeds: {
-    directory: "./database/seeds"
   },
 
   production: {

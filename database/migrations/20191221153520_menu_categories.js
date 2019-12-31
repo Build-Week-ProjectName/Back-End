@@ -4,7 +4,7 @@ exports.up = function(knex) {
 
     menu_categories.string("name", 128).notNullable();
 
-    menu
+    menu_categories
       .integer("menu_id")
       .unsigned()
       .notNullable()

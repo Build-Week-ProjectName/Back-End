@@ -4,10 +4,12 @@ const jwt = require("jsonwebtoken");
 const express = require("express");
 const morgan = require("morgan");
 const helmet = require("helmet");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const server = express();
 
 const authRouter = require("../auth/auth-router.js");
+const Auth = require("../auth/auth-model");
 const usersRouter = require("../users/users-router.js");
 const menuRouter = require("../menu/menu-router");
 const trucksRouter = require("../trucks/trucks-router");
@@ -15,12 +17,13 @@ const trucksRouter = require("../trucks/trucks-router");
 server.use(morgan("dev"));
 server.use(helmet());
 server.use(express.json());
+server.use(bodyParser.json());
 server.use(cors());
 
 server.use("/api/auth", authRouter);
-server.use("/api/users", usersRouter);
-server.use("/api/", menuRouter);
-server.use("/api/", trucksRouter);
+server.use("/api/users", Auth, usersRouter);
+server.use("/api/menu", Auth, menuRouter);
+server.use("/api/trucks", Auth, trucksRouter);
 
 server.get("/", (req, res) => {
   res.send("Backend is responding");

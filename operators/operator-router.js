@@ -6,13 +6,13 @@ const Operator = require("./operators-model");
 const config = require("../config/database");
 
 router.post("/register", (req, res) => {
-  let newOper = new Operator({
+  let newOperator = new Operator({
     name: req.body.name,
     username: req.body.username,
     email: req.body.email,
     password: req.body.password
   });
-  Operator.add(newOper, (err, user) => {
+  Operator.add(newOperator, (err, user) => {
     if (err) {
       let message = "";
       if (err.errors.username) message = "Username is already taken. ";

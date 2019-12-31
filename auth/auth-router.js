@@ -45,11 +45,11 @@ router.post("/login", (req, res) => {
 function genToken(user) {
   // created the payload...
   const payload = {
-    userid: user.id,
+    user_id: user.user_id,
     username: user.username,
     role: ["Diner"],
 
-    operatorid: operator.id,
+    operator_id: operator.operator_id,
     username: operator.username,
     role: ["Operator"]
   };

@@ -1,14 +1,12 @@
 exports.up = function(knex) {
-  return knex.schema.createTable("menu", menu => {
-    menu;
-    menu.increments();
-    menu.blob("itemImg");
-    menu.string("itemName", 130).notNullable();
-    menu.string("itemDescription", 400).notNullable;
-    menu.integer("itemPrice");
-    menu.string("location", 128).notNullable();
+  return knex.schema.createTable("menu", tbl => {
+    tbl.increments();
+    tbl.blob("itemImg").notNullable();
+    tbl.string("itemName", 130).notNullable();
+    tbl.string("itemDescription", 400).notNullable;
+    tbl.integer("itemPrice");
 
-    menu
+    tbl
       .integer("operator_id")
       .unsigned()
       .notNullable()
@@ -17,7 +15,7 @@ exports.up = function(knex) {
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
 
-    menu
+    tbl
       .integer("reviews_id")
       .unsigned()
       .notNullable()

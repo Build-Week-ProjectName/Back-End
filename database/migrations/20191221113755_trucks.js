@@ -1,14 +1,14 @@
 exports.up = function(knex) {
-  return knex.schema.createTable("trucks", trucks => {
-    trucks.increments();
+  return knex.schema.createTable("trucks", tbl => {
+    tbl.increments();
 
-    trucks;
-    trucks.blob("truckImg").notNullable();
-    trucks.string("name", 128).notNullable();
-    trucks.string("cuisineType", 200).notNullable;
-    trucks.string("location", 128).notNullable();
+    tbl.blob("truckImg").notNullable();
+    tbl.string("truckName", 128).notNullable();
+    tbl.string("truckOwner", 128).notNullable();
+    tbl.string("cuisineType", 200).notNullable();
+    tbl.string("location", 128).notNullable();
 
-    trucks
+    tbl
       .integer("operator_id")
       .unsigned()
       .notNullable()
@@ -17,7 +17,7 @@ exports.up = function(knex) {
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
 
-    trucks
+    tbl
       .integer("reviews_id")
       .unsigned()
       .notNullable()

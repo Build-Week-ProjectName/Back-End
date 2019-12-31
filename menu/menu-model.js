@@ -18,9 +18,9 @@ function findById(id) {
     .first();
 }
 
-function add(list) {
+function add(menu) {
   return db("menu")
-    .insert(listData)
+    .insert(menu)
     .then(ids => {
       return findById(ids[0]);
     });

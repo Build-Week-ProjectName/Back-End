@@ -1,92 +1,73 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport");
-const jwt = require("jsonwebtoken");
+const roleHelper = require("../api/roleHelper");
 const Operator = require("./operators-model");
-const config = require("../config/database");
+const helperObj = require("../api/helperObj");
 
-router.post("/register", (req, res) => {
-  let newOperator = new Operator({
-    name: req.body.name,
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password
-  });
-  Operator.add(newOperator, (err, user) => {
-    if (err) {
-      let message = "";
-      if (err.errors.username) message = "Username is already taken. ";
-      if (err.errors.email) message += "Email already exists.";
-      return res.json({
-        success: false,
-        message
-      });
-    } else {
-      return res.json({
-        success: true,
-        message: "Operator registration is successful."
-      });
-    }
-  });
-});
+router.post("/", async (req, res) => {
+  const [err, Operator] = await roleHelper(Operator.create(req.body));
 
-router.post("/login", (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-
-  Operator.getOpByUsername(username, (err, operator) => {
-    if (err) throw err;
-    if (!operator) {
-      return res.json({
-        success: false,
-        message: "Admin not found."
-      });
-    }
-
-    Operator.comparePassword(password, operator.password, (err, isMatch) => {
-      if (err) throw err;
-      if (isMatch) {
-        const token = jwt.sign(
-          {
-            type: "operator",
-            data: {
-              _id: operator._id,
-              username: operator.username,
-              name: operator.name,
-              email: operator.email
-            }
-          },
-          config.secret,
-          {
-            expiresIn: 604800 // for 1 week time in milliseconds
-          }
-        );
-        return res.json({
-          success: true,
-          token: "JWT " + token
-        });
-      } else {
-        return res.json({
-          success: true,
-          message: "Wrong Password."
-        });
-      }
+  if (err) res.status(400).json(err);
+  else
+    res.status(201).json({
+      created: `the following operator with the id ${operator}`,
+      operator_info: req.body
     });
-  });
 });
 
-/**
- * Get Authenticated user profile
- */
+router.get("/", async (req, res) => {
+  const [err, Operator] = await roleHelper(Operator.get());
 
-router.get(
-  "/profile",
-  passport.authenticate("jwt", {
-    session: false
-  }),
-  (req, res) => {
-    return res.json(req.user);
-  }
-);
+  if (err) res.status(500).json(err);
+  res.status(200).json(operators);
+});
+
+/// operator ID
+router.get("/:id", async (req, res) => {
+  const [err, operator] = await roleHelper(
+    Operator.getById(req.params.operator_id)
+  );
+
+  if (err) res.status(500).json(err);
+  else if (err || isEmptyObj(operator))
+    res.status(404).json({ error: "There is no operator with this id" });
+  else res.status(200).json(operator);
+});
+
+router.get("/:operator_id/trucks", async (req, res) => {
+  const [err, truck] = await roleHelper(
+    Operator.getTrucksById(req.params.operator_id)
+  );
+
+  if (err) res.status(500).json(err);
+  else if (err || helperObj(truck))
+    res
+      .status(404)
+      .json({ error: "There are no trucks associated with this id" });
+  else res.status(200).json(truck);
+});
+
+router.put("/:id", async (req, res) => {
+  const [err, operator] = await roleHelper(
+    Operator.update(req.params.id, req.body)
+  );
+
+  if (err) res.status(500).json(err);
+  else
+    res.status(200).json({
+      success: `The operator with id ${req.params.id} was updated with the following changes`,
+      operator
+    });
+});
+
+router.delete("/:id", async (req, res) => {
+  const [err, count] = await roleHelper(Operator.remove(req.params.id));
+  console.log(count);
+  if (err) res.status(500).json(err);
+  else
+    res
+      .status(200)
+      .json({ deleted: `${count} operator of id ${req.params.id}` });
+});
 
 module.exports = router;

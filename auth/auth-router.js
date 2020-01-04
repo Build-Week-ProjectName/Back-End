@@ -1,9 +1,8 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const secrets = require("../config/secrets.js");
-
 const Users = require("../users/users-model.js");
+const secret = require("../config/secrets");
 
 router.post("/register", (req, res) => {
   let user = req.body;
@@ -31,7 +30,7 @@ router.post("/login", (req, res) => {
       if (user && bcrypt.compareSync(password, user.password)) {
         // pass the found user into the genToken() method, and get the token
         const token = genToken(user);
-        // returns1q the found user's username, and the token"
+        // returns the found user's username, and the token"
         res.status(200).json({ username: user.username, token: token });
       } else {
         res.status(401).json({ message: "Invalid Credentials" });
@@ -46,16 +45,12 @@ function genToken(user) {
   // created the payload...
   const payload = {
     user_id: user.user_id,
-    username: user.username,
-    role: ["Diner"],
-
-    operator_id: operator.operator_id,
-    username: operator.username,
-    role: ["Operator"]
+    username: user.username
+    // role: ["Operator"] //this comes from the database
   };
 
-  const options = { expiresIn: "1h" };
-  const token = jwt.sign(payload, secrets.jwtSecret, options);
+  const options = { expiresIn: "1d" };
+  const token = jwt.sign(payload, secret.jwtSecret, options);
 
   return token;
 }

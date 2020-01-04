@@ -7,11 +7,20 @@ exports.up = function(knex) {
     tbl.integer("itemPrice");
 
     tbl
+      .integer("trucks_id")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("trucks")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
+
+    tbl
       .integer("operator_id")
       .unsigned()
       .notNullable()
       .references("id")
-      .inTable("operators")
+      .inTable("operator")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
 

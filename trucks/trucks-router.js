@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Trucks = require("../trucks/trucks-model");
+const Operator = require("../operators/operators-model");
 
 router.get("/trucks", (req, res) => {
   Trucks.find(truck)

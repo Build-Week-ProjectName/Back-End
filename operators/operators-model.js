@@ -10,11 +10,11 @@ module.exports = {
 };
 
 function create(operator) {
-  return db("operators").insert(operator);
+  return db("operator").insert(operator);
 }
 
 function get() {
-  return db("operators");
+  return db("operator");
 }
 
 function getById(id) {

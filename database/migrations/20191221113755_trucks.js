@@ -7,7 +7,7 @@ exports.up = function(knex) {
     trucks.string("truckOwner", 128).notNullable();
     trucks.string("cuisineType", 200).notNullable();
     trucks.string("location", 128).notNullable();
-    trucks.integer("reviews");
+    trucks.string("reviews", 400);
 
     trucks
       .integer("operator_id")
@@ -15,15 +15,6 @@ exports.up = function(knex) {
       .notNullable()
       .references("id")
       .inTable("operator")
-      .onDelete("CASCADE")
-      .onUpdate("CASCADE");
-
-    trucks
-      .integer("reviews_id")
-      .unsigned()
-      .notNullable()
-      .references("id")
-      .inTable("reviews")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
   });

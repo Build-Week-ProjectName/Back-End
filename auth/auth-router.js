@@ -31,7 +31,14 @@ router.post("/login", (req, res) => {
         // pass the found user into the genToken() method, and get the token
         const token = genToken(user);
         // returns the found user's username, and the token"
-        res.status(200).json({ username: user.username, token: token });
+        res
+          .status(200)
+          .json({
+            id: user.id,
+            username: user.username,
+            role: user.role,
+            token: token
+          });
       } else {
         res.status(401).json({ message: "Invalid Credentials" });
       }
@@ -45,8 +52,8 @@ function genToken(user) {
   // created the payload...
   const payload = {
     user_id: user.user_id,
-    username: user.username
-    // role: ["Operator"] //this comes from the database
+    username: user.username,
+    role: user.role //this comes from the database
   };
 
   const options = { expiresIn: "1d" };

@@ -18,13 +18,13 @@ exports.seed = function(knex) {
           role: "diner"
         },
         {
-          username: "operator",
+          username: "jack",
           password: "password",
           email: "operator@gmail.com",
           role: "operator"
         },
         {
-          username: "diner",
+          username: "dino",
           password: "password",
           email: "diner@gmail.com",
           role: "diner"

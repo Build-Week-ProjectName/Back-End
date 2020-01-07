@@ -9,25 +9,29 @@ exports.seed = function(knex) {
           username: "bill",
           password: "password",
           email: "bill@gmail.com",
-          role: "operator"
+          role: "operator",
+          operator_id: 2
         },
         {
           username: "tom",
           password: "password",
           email: "tom@gmail.com",
-          role: "diner"
+          role: "diner",
+          operator_id: 1
         },
         {
           username: "jack",
           password: "password",
           email: "operator@gmail.com",
-          role: "operator"
+          role: "operator",
+          operator_id: 3
         },
         {
           username: "dino",
           password: "password",
           email: "diner@gmail.com",
-          role: "diner"
+          role: "diner",
+          operator_id: 4
         }
       ]);
     });

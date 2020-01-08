@@ -2,10 +2,10 @@ exports.up = function(knex) {
   return knex.schema.createTable("trucks", trucks => {
     trucks.increments();
 
-    trucks.blob("truckImg").notNullable();
-    trucks.string("truckName", 128).notNullable();
-    trucks.string("truckOwner", 128).notNullable();
-    trucks.string("cuisineType", 200).notNullable();
+    trucks.blob("truck_image").notNullable();
+    trucks.string("truck_name", 128).notNullable();
+    trucks.string("truck_owner", 128).notNullable();
+    trucks.string("cuisine_type", 200).notNullable();
     trucks.string("location_lat");
     trucks.string("location_lon");
     trucks.string("reviews", 400);

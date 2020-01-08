@@ -28,7 +28,7 @@ router.get("/", (req, res) => {
  * @apiSuccess {String} message: 200
  * */
 
-router.get("/:id", (req, res) => {/
+router.get("/:id", (req, res) => {
   Menu.findById(req.params.id)
     .then(menu => {
       if (menu) {

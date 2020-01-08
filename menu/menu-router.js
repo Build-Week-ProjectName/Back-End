@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Menu = require("../menu/menu-model");
 
 /**
- * @api {get} /api/menu
+ * @api {get} https://backend-foodfruckr2.herokuapp.com/api/menu
  * @apiName GetMenu
  * @apiGroup Menu
  * @apiSuccess {String} message: 200

@@ -1,6 +1,12 @@
 const router = require("express").Router();
 const Users = require("../users/users-model");
-// const authRequired = require("../auth/restricted-middleware");
+
+/**
+ * @api {get} https://backend-foodfruckr2.herokuapp.com/api/users
+ * @apiName GetUser
+ * @apiGroup Users
+ * @apiSuccess  {String} message: 200
+ * */
 
 router.get("/", (req, res) => {
   Users.getUsers()

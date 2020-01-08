@@ -1,10 +1,10 @@
 exports.up = function(knex) {
   return knex.schema.createTable("menu", tbl => {
     tbl.increments();
-    tbl.blob("itemImg").notNullable();
-    tbl.string("itemName", 130).notNullable();
-    tbl.string("itemDescription", 400).notNullable;
-    tbl.integer("itemPrice");
+    tbl.blob("image").notNullable();
+    tbl.string("name", 130).notNullable();
+    tbl.string("description", 400).notNullable;
+    tbl.integer("price");
     tbl.string("reviews", 300);
 
     tbl

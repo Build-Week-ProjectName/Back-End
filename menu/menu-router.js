@@ -8,13 +8,11 @@ const Menu = require("../menu/menu-model");
  * @apiSuccess {String} message: 200
  * */
 router.get("/", (req, res) => {
-  Menu.find(menu)
+  Menu.getMenu()
     .then(menu => {
       res.status(200).json(menu);
     })
     .catch(error => {
-      // logs error to server
-      console.log(error);
       res.status(500).json({
         message: "Error retrieving the menu"
       });

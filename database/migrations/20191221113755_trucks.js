@@ -6,7 +6,8 @@ exports.up = function(knex) {
     trucks.string("truckName", 128).notNullable();
     trucks.string("truckOwner", 128).notNullable();
     trucks.string("cuisineType", 200).notNullable();
-    trucks.string("location", 128).notNullable();
+    trucks.string("location_lat");
+    trucks.string("location_lon");
     trucks.string("reviews", 400);
 
     trucks
@@ -15,8 +16,8 @@ exports.up = function(knex) {
       .notNullable()
       .references("id")
       .inTable("operator")
-      .onDelete("CASCADE")
-      .onUpdate("CASCADE");
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
   });
 };
 

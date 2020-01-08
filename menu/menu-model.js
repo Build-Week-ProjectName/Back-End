@@ -1,14 +1,14 @@
 const db = require("../config/dbConfig");
 
 module.exports = {
-  find,
   findById,
   add,
   update,
-  remove
+  remove,
+  getMenu
 };
 
-function find() {
+function getMenu() {
   return db("menu");
 }
 

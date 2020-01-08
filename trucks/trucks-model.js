@@ -2,6 +2,7 @@ const db = require("../config/dbConfig");
 
 module.exports = {
   find,
+  getTrucks,
   findById,
   add,
   update,
@@ -16,6 +17,21 @@ function find() {
     "location",
     "reviews"
   );
+}
+// function getTrucks() {
+//   return db("trucks");
+// }
+function getTrucks() {
+  return db("trucks").then(trucks => {
+    trucks.map(item => {
+      if (item.isCompleted) {
+        item.isCompleted = true;
+      } else {
+        item.isCompleted = false;
+      }
+    });
+    return trucks;
+  });
 }
 
 function findById(id) {

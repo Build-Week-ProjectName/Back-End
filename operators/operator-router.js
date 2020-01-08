@@ -1,73 +1,81 @@
 const express = require("express");
 const router = express.Router();
-const roleHelper = require("../api/roleHelper");
 const Operator = require("./operators-model");
-const helperObj = require("../api/helperObj");
 
-router.post("/", async (req, res) => {
-  const [err, Operator] = await roleHelper(Operator.create(req.body));
+router.get("/", (req, res) => {
+  Operator.getOperators()
+    .then(operator => {
+      res.json(operator);
+    })
+    .catch(err => res.send(err));
+});
 
-  if (err) res.status(400).json(err);
-  else
-    res.status(201).json({
-      created: `the following operator with the id ${operator}`,
-      operator_info: req.body
+// /api/truck/:id should be used to get a truck item
+router.get("/:id", (req, res) => {
+  Operator.getById(req.params.id)
+    .then(operator => {
+      if (operator) {
+        res.status(200).json(operator);
+      } else {
+        res.status(404).json({ message: "operator is not found" });
+      }
+    })
+    .catch(error => {
+      // log error to server
+      console.log(error);
+      res.status(500).json({
+        message: "Error retrieving the Operator."
+      });
     });
 });
 
-router.get("/", async (req, res) => {
-  const [err, Operator] = await roleHelper(Operator.get());
-
-  if (err) res.status(500).json(err);
-  res.status(200).json(operators);
-});
-
-/// operator ID
-router.get("/:id", async (req, res) => {
-  const [err, operator] = await roleHelper(
-    Operator.getById(req.params.operator_id)
-  );
-
-  if (err) res.status(500).json(err);
-  else if (err || isEmptyObj(operator))
-    res.status(404).json({ error: "There is no operator with this id" });
-  else res.status(200).json(operator);
-});
-
-router.get("/:operator_id/trucks", async (req, res) => {
-  const [err, truck] = await roleHelper(
-    Operator.getTrucksById(req.params.operator_id)
-  );
-
-  if (err) res.status(500).json(err);
-  else if (err || helperObj(truck))
-    res
-      .status(404)
-      .json({ error: "There are no trucks associated with this id" });
-  else res.status(200).json(truck);
-});
-
-router.put("/:id", async (req, res) => {
-  const [err, operator] = await roleHelper(
-    Operator.update(req.params.id, req.body)
-  );
-
-  if (err) res.status(500).json(err);
-  else
-    res.status(200).json({
-      success: `The operator with id ${req.params.id} was updated with the following changes`,
-      operator
+// Adds new truck item
+router.post("/", (req, res) => {
+  Operator.add(req.body)
+    .then(operator => {
+      res.status(201).json(operator);
+    })
+    .catch(error => {
+      // log error to server
+      console.log(error);
+      res.status(500).json({
+        message: "Error adding the operator"
+      });
     });
 });
 
-router.delete("/:id", async (req, res) => {
-  const [err, count] = await roleHelper(Operator.remove(req.params.id));
-  console.log(count);
-  if (err) res.status(500).json(err);
-  else
-    res
-      .status(200)
-      .json({ deleted: `${count} operator of id ${req.params.id}` });
+// updates operator
+router.put(":id", (req, res) => {
+  Operator.update(req.params.id, req.body)
+    .then(operator => {
+      if (operator) {
+        res.status(200).json(operator);
+      } else {
+        res.status(404).json({ message: "The operator could not be found" });
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({
+        message: "Error updating the operator"
+      });
+    });
 });
 
+router.delete("/:id", (req, res) => {
+  Operator.remove(req.params.id)
+    .then(count => {
+      if (count > 0) {
+        res.status(200).json({ message: "The operator has been removed" });
+      } else {
+        res.status(404).json({ message: "The operator could not be found" });
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({
+        message: "Error removing the operator."
+      });
+    });
+});
 module.exports = router;

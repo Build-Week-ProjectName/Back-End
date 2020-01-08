@@ -1,19 +1,21 @@
 const db = require("../config/dbConfig");
 
 module.exports = {
-  create,
-  get,
+  add,
   getTrucksById,
   update,
   getById,
-  remove
+  remove,
+  getOperators
 };
 
-function create(operator) {
-  return db("operator").insert(operator);
+async function add(operator) {
+  const [id] = await db("operator").insert(operator);
+
+  return getById(id);
 }
 
-function get() {
+function getOperators() {
   return db("operator");
 }
 

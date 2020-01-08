@@ -21,11 +21,11 @@ server.use(express.json());
 server.use(cors());
 
 server.use("/api/auth", authRouter);
-server.use("/api/users", auth, usersRouter);
+server.use("/api/users", usersRouter);
 server.use("/api/menu", menuRouter);
 server.use("/api/trucks", trucksRouter);
 server.use("/api/menuCat", menuCatRouter);
-server.use("/api/operator", auth, operatorRouter);
+server.use("/api/operator", operatorRouter);
 
 server.get("/", (req, res) => {
   res.send("Backend is responding");

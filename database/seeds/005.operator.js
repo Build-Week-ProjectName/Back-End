@@ -13,12 +13,12 @@ exports.seed = function(knex) {
         {
           name: "Tom and Jerry",
           truckOwn: "Burger Town3 and Burger Town 4",
-          user_id: 2
+          user_id: 1
         },
         {
           name: "Peter Pan",
           truckOwn: "Taco Town 2 own Taco Town 3",
-          user_id: 5
+          user_id: 1
         }
       ]);
     });

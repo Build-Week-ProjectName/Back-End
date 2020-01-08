@@ -1,8 +1,13 @@
 const router = require("express").Router();
 const Menu = require("../menu/menu-model");
 
-//only runs if url has /api/menu in it
-router.get("/menu", (req, res) => {
+/**
+ * @api {get} /api/menu
+ * @apiName GetMenu
+ * @apiGroup Menu
+ * @apiSuccess {String} message: 200
+ * */
+router.get("/", (req, res) => {
   Menu.find(menu)
     .then(menu => {
       res.status(200).json(menu);
@@ -16,8 +21,14 @@ router.get("/menu", (req, res) => {
     });
 });
 
-// /api/menu/:id should be used to get a menu item
-router.get("/:id", (req, res) => {
+/**
+ * @api {number} id menu item id
+ * @apiName GetMenu
+ * @apiGroup Menu
+ * @apiSuccess {String} message: 200
+ * */
+
+router.get("/:id", (req, res) => {/
   Menu.findById(req.params.id)
     .then(menu => {
       if (menu) {
@@ -35,7 +46,12 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// Adds new menu item
+/**
+ * @api {post} id
+ * @apiName Add Menu items
+ * @apiGroup Menu
+ * @apiSuccess {String} message: 201
+ * */
 router.post("/", (req, res) => {
   Menu.add(req.body)
     .then(menu => {
@@ -50,6 +66,12 @@ router.post("/", (req, res) => {
     });
 });
 
+/**
+ * @api {number} id menu item id
+ * @apiName Update Menu Items
+ * @apiGroup Menu
+ * @apiSuccess {String} message: 200
+ * */
 // updates menu item
 router.put(":id", (req, res) => {
   Menu.update(req.params.id, req.body)
@@ -68,6 +90,12 @@ router.put(":id", (req, res) => {
     });
 });
 
+/**
+ * @api {number} id menu item id
+ * @apiName Delete Menu
+ * @apiGroup Menu
+ * @apiSuccess {String} message: 200 "The    menu item has been removed"
+ * */
 router.delete("/:id", (req, res) => {
   Menu.remove(req.params.id)
     .then(count => {

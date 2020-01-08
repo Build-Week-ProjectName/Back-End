@@ -1,23 +1,22 @@
 const jwt = require("jsonwebtoken");
-const secret = require("../config/secrets");
+const secrets = require("../config/secrets");
 
 module.exports = (req, res, next) => {
-  const { authorization } = req.headers;
-
-  if (authorization) {
-    const secret = process.env.JWT_SECRET || "this is a secret, it is safe";
-
-    jwt.verify(authorization, secret, (error, decodedJwt) => {
+  const token = req.headers.authorization;
+  if (req.decodedJwt) {
+    next();
+  } else if (token) {
+    jwt.verify(token, secrets.jwtSecret, (err, decodedJwt) => {
       // if the token doesn't verify
-      if (error) {
+      if (err) {
         res.status(401).json({ you: "shall not pass!" });
         // if it DOES...
       } else {
-        req.user = { username: decodedJwt.username, role: decodedJwt.role };
+        req.decodedJwt = decodedJwt;
         next();
       }
     });
   } else {
-    res.status(400).json({ message: "Please login and try again." });
+    res.status(401).json({ you: "can't touch that." });
   }
 };

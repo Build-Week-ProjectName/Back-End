@@ -4,6 +4,25 @@ const jwt = require("jsonwebtoken");
 const Users = require("../users/users-model.js");
 const secret = require("../config/secrets");
 
+/**
+ * @api {post} /auth/register/ Login User
+ * @apiName LoginUser
+ * @apiGroup Auth
+ *
+ * @apiParam {String} username username
+ * @apiParam {String} email email
+ * @apiParam {String} password password
+ * @apiParam {String} role role
+ *
+ * @apiSuccess {String} token JWT
+ *
+ * @apiSuccessExample Successful Reponse:
+ * HTTP/1.1 200 OK
+ * {
+ *   "token": "18927398172c hsdkucbfy voq2 3rj23.41.2,3k4hjd`x8o237c49p8123759[48c17]`"
+ * }
+ */
+
 router.post("/register", (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 15); // 2 ^ n
@@ -21,6 +40,24 @@ router.post("/register", (req, res) => {
     });
 });
 
+/**
+ * @api {post} /auth/login/  logs in  User
+ * @apiName  LoginUser
+ * @apiGroup Auth
+ *
+ * @apiParam {String} username username
+ * @apiParam {String} password password
+ *
+ *
+ * @apiSuccess {String} message
+ *
+ * @apiSuccessExample Successful Reponse:
+ * HTTP/1.1 201 OK
+ * {
+ *   "message": "success"
+ * }
+ */
+
 router.post("/login", (req, res) => {
   let { username, password } = req.body;
 
@@ -31,14 +68,12 @@ router.post("/login", (req, res) => {
         // pass the found user into the genToken() method, and get the token
         const token = genToken(user);
         // returns the found user's username, and the token"
-        res
-          .status(200)
-          .json({
-            id: user.id,
-            username: user.username,
-            role: user.role,
-            token: token
-          });
+        res.status(200).json({
+          id: user.id,
+          username: user.username,
+          role: user.role,
+          token: token
+        });
       } else {
         res.status(401).json({ message: "Invalid Credentials" });
       }

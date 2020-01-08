@@ -22,9 +22,9 @@ server.use(cors());
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", auth, usersRouter);
-server.use("/api/menu", auth, menuRouter);
-server.use("/api/trucks", auth, trucksRouter);
-server.use("/api/menuCat", auth, menuCatRouter);
+server.use("/api/menu", menuRouter);
+server.use("/api/trucks", trucksRouter);
+server.use("/api/menuCat", menuCatRouter);
 server.use("/api/operator", auth, operatorRouter);
 
 server.get("/", (req, res) => {

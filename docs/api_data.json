@@ -1,9 +1,66 @@
 [
   {
     "type": "post",
-    "url": "/auth/register/",
-    "title": "Login User",
-    "name": "LoginUser",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/auth/login",
+    "title": "",
+    "name": "Login_User",
+    "group": "Auth",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>username</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Body Example",
+          "content": "{\n \"id\": 5,\n \"username\": \"toby\",\n \"role\": \"operator\",\n \"token\": *\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRvYnkiLCJyb2xlIjoib3BlcmF0b3IiLCJpYXQiOjE1Nzg1NDkwODYsImV4cCI6MTU3O* * DYzNTQ4Nn0.dJ9IDQmVQBX10IQE2mH04BuesLjTeQPtg1HmKVtM4eo\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Successful response:",
+          "content": "HTTP/1.1 201 OK\n{\n  \"message\": \"success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./auth/auth-router.js",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "post",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/",
+    "title": "auth/register/",
+    "name": "Register_User",
     "group": "Auth",
     "parameter": {
       "fields": {
@@ -34,10 +91,17 @@
             "type": "String",
             "optional": false,
             "field": "role",
-            "description": "<p>role</p>"
+            "description": "<p>operator or diner</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Example Body:",
+          "content": "\n \n{\n\"created_user\": {\n  \"id\": 5,\n \"username\": \"toby\",\n \"email\": \"12345@gamil.com\",\n \"password\": *\"$2a$15$OKUNFkb1MD8o0JsyD.1gp.3yaQstc2gNajUdtEryieUCEnsy0kgp*q* \",\n \"role\": \"operator\"\n},\n\"token\": *\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRvYn*k*iLCJyb2xlIjoib3BlcmF0b3IiLCJpYXQiOjE1Nzg1NDg1NTYs*ImV4cCI6MT*U3*ODYzNDk1Nn0.bZLupv1Hx_BlTuxRW0iPOydWhmnFfhTYKh7OEc1rvUo\"\n}",
+          "type": "json"
+        }
+      ]
     },
     "success": {
       "fields": {
@@ -53,58 +117,8 @@
       },
       "examples": [
         {
-          "title": "Successful Reponse:",
+          "title": "Successful Response:",
           "content": "HTTP/1.1 200 OK\n{\n  \"token\": \"18927398172c hsdkucbfy voq2 3rj23.41.2,3k4hjd`x8o237c49p8123759[48c17]`\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "./auth/auth-router.js",
-    "groupTitle": "Auth"
-  },
-  {
-    "type": "post",
-    "url": "/auth/login/",
-    "title": "logs in  User",
-    "name": "LoginUser",
-    "group": "Auth",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "username",
-            "description": "<p>username</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "password",
-            "description": "<p>password</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "message",
-            "description": ""
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Successful Reponse:",
-          "content": "HTTP/1.1 201 OK\n{\n  \"message\": \"success\"\n}",
           "type": "json"
         }
       ]
@@ -143,56 +157,10 @@
   },
   {
     "type": "post",
-    "url": "id",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/menu_categories",
     "title": "",
-    "name": "Add_Menu_items",
-    "group": "Menu",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "message:",
-            "description": "<p>201</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "./menu/menu-router.js",
-    "groupTitle": "Menu"
-  },
-  {
-    "type": "number",
-    "url": "id",
-    "title": "menu item id",
-    "name": "Delete_Menu",
-    "group": "Menu",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "message:",
-            "description": "<p>200 &quot;The    menu item has been removed&quot;</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "./menu/menu-router.js",
-    "groupTitle": "Menu"
-  },
-  {
-    "type": "get",
-    "url": "/api/menu",
-    "title": "",
-    "name": "GetMenu",
-    "group": "Menu",
+    "name": "Add_new_categories",
+    "group": "Menu-Categories",
     "success": {
       "fields": {
         "Success 200": [
@@ -207,15 +175,38 @@
       }
     },
     "version": "0.0.0",
-    "filename": "./menu/menu-router.js",
-    "groupTitle": "Menu"
+    "filename": "./menuCategories/menuCat-router.js",
+    "groupTitle": "Menu-Categories"
   },
   {
-    "type": "number",
-    "url": "id",
-    "title": "menu item id",
-    "name": "GetMenu",
-    "group": "Menu",
+    "type": "delete",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/menu_categories",
+    "title": "",
+    "name": "Delete_categories",
+    "group": "Menu-Categories",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>&quot;The category item has been removed.&quot;</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./menuCategories/menuCat-router.js",
+    "groupTitle": "Menu-Categories"
+  },
+  {
+    "type": "put",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/menu_categories",
+    "title": "",
+    "name": "Update_Menu_Categories",
+    "group": "Menu-Categories",
     "success": {
       "fields": {
         "Success 200": [
@@ -230,14 +221,14 @@
       }
     },
     "version": "0.0.0",
-    "filename": "./menu/menu-router.js",
-    "groupTitle": "Menu"
+    "filename": "./menuCategories/menuCat-router.js",
+    "groupTitle": "Menu-Categories"
   },
   {
-    "type": "number",
-    "url": "id",
-    "title": "menu item id",
-    "name": "Update_Menu_Items",
+    "type": "post",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/menu",
+    "title": "",
+    "name": "Add_Menu_Item",
     "group": "Menu",
     "success": {
       "fields": {
@@ -258,65 +249,416 @@
   },
   {
     "type": "delete",
-    "url": "/truck/:truck_id",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/menu/id",
     "title": "",
-    "name": "DeleteTrucks",
-    "group": "trucks",
+    "name": "Delete_Menu_Item_by_id",
+    "group": "Menu",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>&quot;The menu item has been removed&quot;</p>"
+          }
+        ]
+      }
+    },
     "version": "0.0.0",
-    "filename": "./trucks/trucks-router.js",
-    "groupTitle": "trucks"
+    "filename": "./menu/menu-router.js",
+    "groupTitle": "Menu"
   },
   {
     "type": "get",
-    "url": "/trucks/:operator_id",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/menu",
     "title": "",
-    "name": "GetTrucksByOperatorId",
-    "group": "trucks",
+    "name": "Get_Menu",
+    "group": "Menu",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
     "version": "0.0.0",
-    "filename": "./trucks/trucks-router.js",
-    "groupTitle": "trucks"
+    "filename": "./menu/menu-router.js",
+    "groupTitle": "Menu"
   },
   {
-    "type": "get",
-    "url": "/trucks",
-    "title": "",
-    "name": "Gettrucks",
-    "group": "trucks",
+    "type": "number",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/menu/id",
+    "title": "example: https://backend-foodtruckr2.herokuapp.com/api/menu/1",
+    "name": "Get_Menu_by_id",
+    "group": "Menu",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
     "version": "0.0.0",
-    "filename": "./trucks/trucks-router.js",
-    "groupTitle": "trucks"
-  },
-  {
-    "type": "post",
-    "url": "/trucks",
-    "title": "",
-    "name": "PostTrucks",
-    "group": "trucks",
-    "version": "0.0.0",
-    "filename": "./trucks/trucks-router.js",
-    "groupTitle": "trucks"
+    "filename": "./menu/menu-router.js",
+    "groupTitle": "Menu"
   },
   {
     "type": "put",
-    "url": "/trucks/:truck_id",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/menu/id",
     "title": "",
-    "name": "PutTrucks",
-    "group": "trucks",
-    "parameter": {
+    "name": "Update_Menu_Item_by_id",
+    "group": "Menu",
+    "success": {
       "fields": {
-        "Parameter": [
+        "Success 200": [
           {
-            "group": "Parameter",
-            "type": "Number",
+            "group": "Success 200",
+            "type": "String",
             "optional": false,
-            "field": "id",
-            "description": "<p>truck's unique ID.</p>"
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./menu/menu-router.js",
+    "groupTitle": "Menu"
+  },
+  {
+    "type": "post",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/operator/id",
+    "title": "",
+    "name": "Add_a_new_Operator",
+    "group": "Operator",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./operators/operator-router.js",
+    "groupTitle": "Operator"
+  },
+  {
+    "type": "delete",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/operator/id",
+    "title": "",
+    "name": "Delete_User_by_id",
+    "group": "Operator",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./operators/operator-router.js",
+    "groupTitle": "Operator"
+  },
+  {
+    "type": "get",
+    "url": "https://backend-foodfruckr2.herokuapp.com/api/operator",
+    "title": "",
+    "name": "Get_Operator",
+    "group": "Operator",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./operators/operator-router.js",
+    "groupTitle": "Operator"
+  },
+  {
+    "type": "number",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/operator/id",
+    "title": "",
+    "name": "Get_Operator_by_id",
+    "group": "Operator",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./operators/operator-router.js",
+    "groupTitle": "Operator"
+  },
+  {
+    "type": "put",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/operator/id",
+    "title": "",
+    "name": "Update_Operator_by_id",
+    "group": "Operator",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./operators/operator-router.js",
+    "groupTitle": "Operator"
+  },
+  {
+    "type": "post",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/trucks",
+    "title": "",
+    "name": "Add_new_Truck",
+    "group": "Trucks",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "./trucks/trucks-router.js",
-    "groupTitle": "trucks"
+    "groupTitle": "Trucks"
+  },
+  {
+    "type": "delete",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/trucks/id",
+    "title": "",
+    "name": "Delete_Truck_by_id",
+    "group": "Trucks",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>&quot;The truck has been removed&quot;</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./trucks/trucks-router.js",
+    "groupTitle": "Trucks"
+  },
+  {
+    "type": "get",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/trucks",
+    "title": "",
+    "name": "Get_Trucks",
+    "group": "Trucks",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./trucks/trucks-router.js",
+    "groupTitle": "Trucks"
+  },
+  {
+    "type": "number",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/trucks/id",
+    "title": "",
+    "name": "Get_User_by_id",
+    "group": "Trucks",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./trucks/trucks-router.js",
+    "groupTitle": "Trucks"
+  },
+  {
+    "type": "put",
+    "url": "https://backend-foodtruckr2.herokuapp.com/api/trucks/id",
+    "title": "",
+    "name": "Update_Truck_by_id",
+    "group": "Trucks",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./trucks/trucks-router.js",
+    "groupTitle": "Trucks"
+  },
+  {
+    "type": "delete",
+    "url": "https://backend-foodfruckr2.herokuapp.com/api/users/id",
+    "title": "",
+    "name": "Delete_User_by_id",
+    "group": "Users",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./users/users-router.js",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "get",
+    "url": "https://backend-foodfruckr2.herokuapp.com/api/users",
+    "title": "",
+    "name": "Get_User",
+    "group": "Users",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./users/users-router.js",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "number",
+    "url": "https://backend-foodfruckr2.herokuapp.com/api/users/id",
+    "title": "example: https://backend-foodfruckr2.herokuapp.com/api/users/1",
+    "name": "Get_User_By_id",
+    "group": "Users",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./users/users-router.js",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "put",
+    "url": "https://backend-foodfruckr2.herokuapp.com/api/users/id",
+    "title": "",
+    "name": "Update_User_by_id",
+    "group": "Users",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message:",
+            "description": "<p>200</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./users/users-router.js",
+    "groupTitle": "Users"
   }
 ]

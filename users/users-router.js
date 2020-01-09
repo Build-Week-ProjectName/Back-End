@@ -61,7 +61,7 @@ router.put("/:id", authUserId, (req, res) => {
 });
 
 /**
- * @api {number} https://backend-foodfruckr2.herokuapp.com/api/users/id
+ * @api {delete} https://backend-foodfruckr2.herokuapp.com/api/users/id
  * @apiName Delete User by id
  * @apiGroup Users
  * @apiSuccess  {String} message: 200

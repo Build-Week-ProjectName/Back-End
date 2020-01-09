@@ -5,22 +5,37 @@ const Users = require("../users/users-model.js");
 const secret = require("../config/secrets");
 
 /**
- * @api {post} /auth/register/ Login User
- * @apiName LoginUser
+ * @api {post} https://backend-foodtruckr2.herokuapp.com/api/
+auth/register/ 
+ * @apiName Register User
  * @apiGroup Auth
  *
  * @apiParam {String} username username
  * @apiParam {String} email email
  * @apiParam {String} password password
- * @apiParam {String} role role
+ * @apiParam {String} role operator or diner
  *
  * @apiSuccess {String} token JWT
  *
- * @apiSuccessExample Successful Reponse:
+ * @apiSuccessExample Successful Response:
  * HTTP/1.1 200 OK
  * {
  *   "token": "18927398172c hsdkucbfy voq2 3rj23.41.2,3k4hjd`x8o237c49p8123759[48c17]`"
  * }
+ * 
+ * @apiParamExample Example Body:
+ * 
+ *  
+ * {
+  * "created_user": {
+  *   "id": 5,
+  *  "username": "toby",
+  *  "email": "12345@gamil.com",
+  *  "password": *"$2a$15$OKUNFkb1MD8o0JsyD.1gp.3yaQstc2gNajUdtEryieUCEnsy0kgp*q* ",
+  *  "role": "operator"
+  *},
+  *"token": *"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRvYn*k*iLCJyb2xlIjoib3BlcmF0b3IiLCJpYXQiOjE1Nzg1NDg1NTYs*ImV4cCI6MT*U3*ODYzNDk1Nn0.bZLupv1Hx_BlTuxRW0iPOydWhmnFfhTYKh7OEc1rvUo"
+  * }
  */
 
 router.post("/register", (req, res) => {
@@ -41,8 +56,8 @@ router.post("/register", (req, res) => {
 });
 
 /**
- * @api {post} /auth/login/  logs in  User
- * @apiName  LoginUser
+ * @api {post} https://backend-foodtruckr2.herokuapp.com/api/auth/login
+ * @apiName  Login User
  * @apiGroup Auth
  *
  * @apiParam {String} username username
@@ -51,11 +66,18 @@ router.post("/register", (req, res) => {
  *
  * @apiSuccess {String} message
  *
- * @apiSuccessExample Successful Reponse:
+ * @apiSuccessExample Successful response:
  * HTTP/1.1 201 OK
  * {
  *   "message": "success"
  * }
+ * @apiParamExample Body Example
+ * {
+ *  "id": 5,
+ *  "username": "toby",
+ *  "role": "operator",
+ *  "token": *"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRvYnkiLCJyb2xlIjoib3BlcmF0b3IiLCJpYXQiOjE1Nzg1NDkwODYsImV4cCI6MTU3O* * DYzNTQ4Nn0.dJ9IDQmVQBX10IQE2mH04BuesLjTeQPtg1HmKVtM4eo"
+ *}
  */
 
 router.post("/login", (req, res) => {

@@ -2,6 +2,13 @@ const router = require("express").Router();
 const Trucks = require("../trucks/trucks-model");
 // const Operators = require("../operators/operators-model");
 
+/**
+ * @api {get} https://backend-foodtruckr2.herokuapp.com/api/trucks
+ * @apiName Get Trucks
+ * @apiGroup Trucks
+ * @apiSuccess  {String} message: 200
+ * */
+
 router.get("/", (req, res) => {
   Trucks.getTrucks()
     .then(trucks => {
@@ -10,7 +17,12 @@ router.get("/", (req, res) => {
     .catch(err => res.send(err));
 });
 
-// /api/truck/:id should be used to get a truck item
+/**
+ * @api {number} https://backend-foodtruckr2.herokuapp.com/api/trucks/id
+ * @apiName Get User by id
+ * @apiGroup Trucks
+ * @apiSuccess  {String} message: 200
+ * */
 router.get("/:id", (req, res) => {
   Trucks.findById(req.params.id)
     .then(truck => {
@@ -29,7 +41,12 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// Adds new truck item
+/**
+ * @api {post} https://backend-foodtruckr2.herokuapp.com/api/trucks
+ * @apiName Add new Truck
+ * @apiGroup Trucks
+ * @apiSuccess  {String} message: 200
+ * */
 router.post("/", (req, res) => {
   Trucks.add(req.body)
     .then(truck => {
@@ -44,7 +61,12 @@ router.post("/", (req, res) => {
     });
 });
 
-// updates truck item
+/**
+ * @api {put} https://backend-foodtruckr2.herokuapp.com/api/trucks/id
+ * @apiName Update Truck by id
+ * @apiGroup Trucks
+ * @apiSuccess  {String} message: 200
+ * */
 router.put(":id", (req, res) => {
   Trucks.update(req.params.id, req.body)
     .then(truck => {
@@ -62,6 +84,12 @@ router.put(":id", (req, res) => {
     });
 });
 
+/**
+ * @api {delete} https://backend-foodtruckr2.herokuapp.com/api/trucks/id
+ * @apiName Delete Truck by id
+ * @apiGroup Trucks
+ * @apiSuccess  {String} message:  "The truck has been removed"
+ * */
 router.delete("/:id", (req, res) => {
   Trucks.remove(req.params.id)
     .then(count => {
@@ -79,90 +107,3 @@ router.delete("/:id", (req, res) => {
     });
 });
 module.exports = router;
-
-// /**
-//  *@api {get} /trucks
-//  *@apiName Gettrucks
-//  *@apiGroup trucks
-//  **/
-
-// router.get("/", async (req, res) => {
-//   const [err, trucks] = await withCatch(Trucks.find());
-
-//   if (err) res.status(500).json(err);
-//   else if (err || isEmptyObj(trucks))
-//     res.status(404).json({ error: "No trucks available." });
-//   else res.status(200).json(trucks);
-// });
-
-// /**
-//  *@api {get} /trucks/:operator_id
-//  *@apiName GetTrucksByOperatorId
-//  *@apiGroup trucks
-//  **/
-
-// router.get("/:operator_id", async (req, res) => {
-//   const [err, trucks] = await withCatch(
-//     Operators.findById(req.params.operator_id)
-//   );
-
-//   if (err) res.status(500).json(err);
-//   else if (err || isEmptyObj(trucks))
-//     res.status(404).json({
-//       error: "There are no trucks registered with this Operator yet."
-//     });
-//   else res.status(200).json(trucks);
-// });
-
-// /**
-//  *@api {post} /trucks
-//  *@apiName PostTrucks
-//  *@apiGroup trucks
-//  **/
-
-// router.post("/", async (req, res) => {
-//   const [err, trucks] = await withCatch(Trucks.add(req.body));
-
-//   if (err) res.status(500).json(err);
-//   else
-//     res.status(201).json({
-//       created: `following truck with id of ${trucks}`,
-//       trucks: req.body
-//     });
-// });
-
-// /**
-//  *@api {put} /trucks/:truck_id
-//  *@apiName PutTrucks
-//  *@apiGroup trucks
-//  *@apiParam {Number} id truck's unique ID.
-//  **/
-
-// router.put("/:id", async (req, res) => {
-//   const [err, trucks] = await withCatch(Trucks.update(req.params.id, req.body));
-
-//   if (err) res.status(500).json(err);
-//   else
-//     res.status(200).json({
-//       updated: `following TRUCK with id of ${req.params.id}`,
-//       newJob: req.body
-//     });
-// });
-
-// /**
-//  *@api {delete} /truck/:truck_id
-//  *@apiName DeleteTrucks
-//  *@apiGroup trucks
-//  **/
-
-// router.delete("/:id", async (req, res) => {
-//   const [err, count] = await withCatch(Trucks.remove(req.params.id));
-
-//   if (err) res.status(500).json(err);
-//   else
-//     res
-//       .status(200)
-//       .json({ deleted: `${count} Truck(s) of id ${req.params.id}` });
-// });
-
-// module.exports = router;

@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 });
 
 /**
- * @api {number} https://backend-foodfruckr2.herokuapp.com/api/operator/id
+ * @api {number} https://backend-foodtruckr2.herokuapp.com/api/operator/id
  * @apiName Get Operator by id
  * @apiGroup Operator
  * @apiSuccess  {String} message: 200
@@ -41,7 +41,7 @@ router.get("/:id", (req, res) => {
 });
 
 /**
- * @api {post} https://backend-foodfruckr2.herokuapp.com/api/operator/id
+ * @api {post} https://backend-foodtruckr2.herokuapp.com/api/operator/id
  * @apiName Add a new Operator
  * @apiGroup Operator
  * @apiSuccess  {String} message: 200
@@ -61,7 +61,7 @@ router.post("/", (req, res) => {
 });
 
 /**
- * @api {number} https://backend-foodfruckr2.herokuapp.com/api/operator/id
+ * @api {put} https://backend-foodtruckr2.herokuapp.com/api/operator/id
  * @apiName Update Operator by id
  * @apiGroup Operator
  * @apiSuccess  {String} message: 200
@@ -84,7 +84,7 @@ router.put(":id", (req, res) => {
 });
 
 /**
- * @api {number} https://backend-foodfruckr2.herokuapp.com/api/operator/id
+ * @api {delete} https://backend-foodtruckr2.herokuapp.com/api/operator/id
  * @apiName Delete User by id
  * @apiGroup Operator
  * @apiSuccess  {String} message: 200

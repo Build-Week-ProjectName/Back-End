@@ -6,6 +6,7 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex("trucks").insert([
         {
+          id: 1,
           truck_image:
             "https://images.pexels.com/photos/1264937/pexels-photo-1264937.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
           truck_name: "Get Your Taco On",
@@ -17,6 +18,7 @@ exports.seed = function(knex) {
           operator_id: 1
         },
         {
+          id: 2,
           truck_image:
             "https://images.pexels.com/photos/1766682/pexels-photo-1766682.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
           truck_name: "Burger Town",
@@ -28,6 +30,7 @@ exports.seed = function(knex) {
           operator_id: 3
         },
         {
+          id: 3,
           truck_image:
             "https://images.pexels.com/photos/2553651/pexels-photo-2553651.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
           truck_name: "Waffle me up",

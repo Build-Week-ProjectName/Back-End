@@ -1,6 +1,6 @@
 exports.up = function(knex) {
   return knex.schema.createTable("operator", operator => {
-    operator.increments();
+    operator.increments("id");
     operator.string("name", 128).notNullable();
     operator.string("trucksOwn").notNullable();
 

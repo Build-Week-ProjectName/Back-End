@@ -67,11 +67,11 @@ router.post("/", (req, res) => {
  * @apiGroup Trucks
  * @apiSuccess  {String} message: 200
  * */
-router.put(":id", (req, res) => {
+router.put("trucks/:id", (req, res) => {
   Trucks.update(req.params.id, req.body)
-    .then(truck => {
-      if (truck) {
-        res.status(200).json(truck);
+    .then(trucks => {
+      if (trucks) {
+        res.status(200).json(trucks);
       } else {
         res.status(404).json({ message: "The truck could not be found" });
       }

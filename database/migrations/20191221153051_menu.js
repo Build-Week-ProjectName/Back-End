@@ -4,7 +4,7 @@ exports.up = function(knex) {
     tbl.string("image").notNullable();
     tbl.string("name", 130).notNullable();
     tbl.string("description", 400).notNullable;
-    tbl.integer("price");
+    tbl.string("price");
     tbl.string("reviews", 300);
 
     tbl

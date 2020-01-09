@@ -1,6 +1,6 @@
 exports.up = function up(knex) {
   return knex.schema.createTable("menu_categories", menu_categories => {
-    menu_categories.increments("id");
+    menu_categories.increments();
 
     menu_categories.string("name", 128).notNullable();
 

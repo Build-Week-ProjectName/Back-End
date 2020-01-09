@@ -2,7 +2,7 @@ const router = require("express").Router();
 const MenuCat = require("./menuCat-model");
 
 /**
- * @api {post} https://backend-foodtruckr2.herokuapp.com/api/menu_categories
+ * @api {post} https://backend-foodtruckr2.herokuapp.com/api/menu_Categories
  * @apiName Add new categories
  * @apiGroup Menu-Categories
  * @apiSuccess  {String} message: 200
@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
 });
 
 /**
- * @api {put} https://backend-foodtruckr2.herokuapp.com/api/menu_categories
+ * @api {put} https://backend-foodtruckr2.herokuapp.com/api/menu_Categories
  * @apiName Update Menu Categories
  * @apiGroup Menu-Categories
  * @apiSuccess  {String} message: 200
@@ -45,7 +45,7 @@ router.put(":id", (req, res) => {
 });
 
 /**
- * @api {delete} https://backend-foodtruckr2.herokuapp.com/api/menu_categories
+ * @api {delete} https://backend-foodtruckr2.herokuapp.com/api/menu_Categories
  * @apiName Delete categories
  * @apiGroup Menu-Categories
  * @apiSuccess  {String} message: "The category item has been removed."

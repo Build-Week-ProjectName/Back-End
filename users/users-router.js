@@ -9,6 +9,7 @@ const Users = require("../users/users-model");
  * */
 
 router.get("/", (req, res) => {
+  console.log("***");
   Users.getUsers()
     .then(users => {
       res.json(users);

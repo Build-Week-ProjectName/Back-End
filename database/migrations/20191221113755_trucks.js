@@ -2,7 +2,7 @@ exports.up = function(knex) {
   return knex.schema.createTable("trucks", trucks => {
     trucks.increments();
 
-    trucks.blob("truck_image").notNullable();
+    trucks.string("truck_image").notNullable();
     trucks.string("truck_name", 128).notNullable();
     trucks.string("truck_owner", 128).notNullable();
     trucks.string("cuisine_type", 200).notNullable();

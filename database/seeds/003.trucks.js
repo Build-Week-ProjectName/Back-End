@@ -12,7 +12,7 @@ exports.seed = function(knex) {
           truck_owner: "Bill Gates",
           cuisine_type: "Tacos",
           location_lat: 14256854,
-          location_lon: 1245638,
+          location_lon: 1245637,
           reviews: "The best tacos in town. ",
           operator_id: 1
         },

@@ -2,6 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Operator = require("./operators-model");
 
+/**
+ * @api {get} https://backend-foodfruckr2.herokuapp.com/api/operator
+ * @apiName Get Operator
+ * @apiGroup Operator
+ * @apiSuccess  {String} message: 200
+ * */
 router.get("/", (req, res) => {
   Operator.getOperators()
     .then(operator => {
@@ -10,7 +16,12 @@ router.get("/", (req, res) => {
     .catch(err => res.send(err));
 });
 
-// /api/truck/:id should be used to get a truck item
+/**
+ * @api {number} https://backend-foodfruckr2.herokuapp.com/api/operator/id
+ * @apiName Get Operator by id
+ * @apiGroup Operator
+ * @apiSuccess  {String} message: 200
+ * */
 router.get("/:id", (req, res) => {
   Operator.getById(req.params.id)
     .then(operator => {
@@ -29,7 +40,12 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// Adds new truck item
+/**
+ * @api {post} https://backend-foodfruckr2.herokuapp.com/api/operator/id
+ * @apiName Add a new Operator
+ * @apiGroup Operator
+ * @apiSuccess  {String} message: 200
+ * */
 router.post("/", (req, res) => {
   Operator.add(req.body)
     .then(operator => {
@@ -44,7 +60,12 @@ router.post("/", (req, res) => {
     });
 });
 
-// updates operator
+/**
+ * @api {number} https://backend-foodfruckr2.herokuapp.com/api/operator/id
+ * @apiName Update Operator by id
+ * @apiGroup Operator
+ * @apiSuccess  {String} message: 200
+ * */
 router.put(":id", (req, res) => {
   Operator.update(req.params.id, req.body)
     .then(operator => {
@@ -61,6 +82,13 @@ router.put(":id", (req, res) => {
       });
     });
 });
+
+/**
+ * @api {number} https://backend-foodfruckr2.herokuapp.com/api/operator/id
+ * @apiName Delete User by id
+ * @apiGroup Operator
+ * @apiSuccess  {String} message: 200
+ * */
 
 router.delete("/:id", (req, res) => {
   Operator.remove(req.params.id)

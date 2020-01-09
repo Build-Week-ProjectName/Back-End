@@ -3,7 +3,7 @@ const Users = require("../users/users-model");
 
 /**
  * @api {get} https://backend-foodfruckr2.herokuapp.com/api/users
- * @apiName GetUser
+ * @apiName Get User
  * @apiGroup Users
  * @apiSuccess  {String} message: 200
  * */
@@ -17,6 +17,13 @@ router.get("/", (req, res) => {
     .catch(err => res.send(err));
 });
 
+/**
+ * @api {number} https://backend-foodfruckr2.herokuapp.com/api/users/id   example: https://backend-foodfruckr2.herokuapp.com/api/users/1
+ * @apiName Get User By id
+ * @apiGroup Users
+ * @apiSuccess  {String} message: 200
+ * */
+
 router.get("/:id", authUserId, (req, res) => {
   const id = req.params.id;
 
@@ -29,6 +36,13 @@ router.get("/:id", authUserId, (req, res) => {
       res.status(500).json({ message: "user not found" });
     });
 });
+
+/**
+ * @api {put} https://backend-foodfruckr2.herokuapp.com/api/users/id
+ * @apiName Update User by id
+ * @apiGroup Users
+ * @apiSuccess  {String} message: 200
+ * */
 
 router.put("/:id", authUserId, (req, res) => {
   const id = req.params.id;
@@ -45,6 +59,13 @@ router.put("/:id", authUserId, (req, res) => {
       res.status(500).json({ err });
     });
 });
+
+/**
+ * @api {number} https://backend-foodfruckr2.herokuapp.com/api/users/id
+ * @apiName Delete User by id
+ * @apiGroup Users
+ * @apiSuccess  {String} message: 200
+ * */
 
 router.delete("/:id", authUserId, (req, res) => {
   const id = req.params.id;

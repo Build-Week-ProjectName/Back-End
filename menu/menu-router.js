@@ -3,7 +3,7 @@ const Menu = require("../menu/menu-model");
 
 /**
  * @api {get} https://backend-foodfruckr2.herokuapp.com/api/menu
- * @apiName GetMenu
+ * @apiName Get Menu
  * @apiGroup Menu
  * @apiSuccess {String} message: 200
  * */
@@ -20,10 +20,11 @@ router.get("/", (req, res) => {
 });
 
 /**
- * @api {number} id menu item id
- * @apiName GetMenu
+ 
+ * @api {number} https://backend-foodfruckr2.herokuapp.com/api/menu/id  example: https://backend-foodfruckr2.herokuapp.com/api/menu/1
+ * @apiName Get Menu by id
  * @apiGroup Menu
- * @apiSuccess {String} message: 200
+ * @apiSuccess  {String} message: 200
  * */
 
 router.get("/:id", (req, res) => {
@@ -45,10 +46,10 @@ router.get("/:id", (req, res) => {
 });
 
 /**
- * @api {post} id
- * @apiName Add Menu items
+ * @api {post} https://backend-foodfruckr2.herokuapp.com/api/menu
+ * @apiName Add Menu Item
  * @apiGroup Menu
- * @apiSuccess {String} message: 201
+ * @apiSuccess {String} message: 200
  * */
 router.post("/", (req, res) => {
   Menu.add(req.body)
@@ -65,12 +66,11 @@ router.post("/", (req, res) => {
 });
 
 /**
- * @api {number} id menu item id
- * @apiName Update Menu Items
+ * @api {number} https://backend-foodfruckr2.herokuapp.com/api/menu/id
+ * @apiName Update Menu Item by id
  * @apiGroup Menu
  * @apiSuccess {String} message: 200
  * */
-// updates menu item
 router.put(":id", (req, res) => {
   Menu.update(req.params.id, req.body)
     .then(menu => {
@@ -89,10 +89,10 @@ router.put(":id", (req, res) => {
 });
 
 /**
- * @api {number} id menu item id
- * @apiName Delete Menu
+ * @api {number} https://backend-foodfruckr2.herokuapp.com/api/menu/id
+ * @apiName Delete Menu Item by id
  * @apiGroup Menu
- * @apiSuccess {String} message: 200 "The    menu item has been removed"
+ * @apiSuccess {String} message: "The menu item has been removed"
  * */
 router.delete("/:id", (req, res) => {
   Menu.remove(req.params.id)

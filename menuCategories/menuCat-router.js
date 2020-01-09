@@ -1,6 +1,12 @@
 const router = require("express").Router();
 const MenuCat = require("./menuCat-model");
 
+/**
+ * @api {post} https://backend-foodfruckr2.herokuapp.com/api/menu_categories
+ * @apiName Add new categories
+ * @apiGroup Menu-Categories
+ * @apiSuccess  {String} message: 200
+ * */
 router.post("/", (req, res) => {
   MenuCat.add(req.body)
     .then(category => {
@@ -15,7 +21,12 @@ router.post("/", (req, res) => {
     });
 });
 
-// updates category item
+/**
+ * @api {number} https://backend-foodfruckr2.herokuapp.com/api/menu_categories
+ * @apiName Update Menu Categories
+ * @apiGroup Menu-Categories
+ * @apiSuccess  {String} message: 200
+ * */
 router.put(":id", (req, res) => {
   MenuCat.update(req.params.id, req.body)
     .then(category => {
@@ -33,6 +44,12 @@ router.put(":id", (req, res) => {
     });
 });
 
+/**
+ * @api {number} https://backend-foodfruckr2.herokuapp.com/api/menu_categories
+ * @apiName Delete categories
+ * @apiGroup Menu-Categories
+ * @apiSuccess  {String} message: "The category item has been removed."
+ * */
 router.delete("/:id", (req, res) => {
   MenuCat.remove(req.params.id)
     .then(count => {

@@ -1,6 +1,6 @@
 exports.up = function(knex) {
   return knex.schema.createTable("menu", tbl => {
-    tbl.increments();
+    tbl.increments("id");
     tbl.string("image").notNullable();
     tbl.string("name", 130).notNullable();
     tbl.string("description", 400).notNullable;

@@ -6,20 +6,20 @@ module.exports = {
   remove
 };
 
-async function add(menuCat) {
-  const [id] = await db("menuCat").insert(menuCat);
+async function add(reviews) {
+  const [id] = await db("reviews").insert(reviews);
 
   return findById(id);
 }
 
 function update(id, changes) {
-  return db("menuCat")
+  return db("reviews")
     .where({ id })
     .update(changes);
 }
 
 function remove(id) {
-  return db("menuCat")
+  return db("reviews")
     .where("id", id)
     .del();
 }

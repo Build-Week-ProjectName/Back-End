@@ -12,7 +12,7 @@ const auth = require("../auth/restricted-middleware");
 const usersRouter = require("../users/users-router.js");
 const menuRouter = require("../menu/menu-router");
 const trucksRouter = require("../trucks/trucks-router");
-const menuCatRouter = require("../menuCategories/menuCat-router");
+const reviewsRouter = require("../reviews/review-router");
 const operatorRouter = require("../operators/operator-router");
 
 server.use(morgan("dev"));
@@ -26,7 +26,7 @@ server.use("/api/auth", authRouter);
 server.use("/api/users", usersRouter);
 server.use("/api/menu", menuRouter);
 server.use("/api/trucks", trucksRouter);
-server.use("/api/menuCat", menuCatRouter);
+server.use("/api/reviews", reviewsRouter);
 server.use("/api/operator", operatorRouter);
 
 server.get("/", (req, res) => {

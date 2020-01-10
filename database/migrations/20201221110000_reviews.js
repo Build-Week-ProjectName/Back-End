@@ -2,7 +2,7 @@ exports.up = function up(knex) {
   return knex.schema.createTable("reviews", reviews => {
     reviews.increments();
 
-    reviews.datetime("date", { precision: 6 }).defaultTo(knex.fn.now(6));
+    reviews.integer("date");
     reviews.integer("rating");
     reviews.string("content", 250);
 

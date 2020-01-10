@@ -12,7 +12,7 @@ const auth = require("../auth/restricted-middleware");
 const usersRouter = require("../users/users-router.js");
 const menuRouter = require("../menu/menu-router");
 const trucksRouter = require("../trucks/trucks-router");
-const reviewsRouter = require("../reviews/review-router");
+const reviewsRouter = require("../reviews/reviews-router");
 const operatorRouter = require("../operators/operator-router");
 
 server.use(morgan("dev"));

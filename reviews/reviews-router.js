@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Reviews = require("./reviews-model");
+const Reviews = require("./review-model");
 
 /**
  * @api {post} https://backend-foodtruckr2.herokuapp.com/api/reviews

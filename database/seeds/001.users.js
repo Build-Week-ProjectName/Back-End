@@ -6,7 +6,7 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex("users").insert([
         {
-          // id: 1,
+          id: 1,
           role: "operator",
           firstName: "bill",
           lastName: "smith",
@@ -20,7 +20,7 @@ exports.seed = function(knex) {
         },
 
         {
-          // id: ,
+          id: 2,
           role: "diner",
           firstName: "Tom",
           lastName: "Jones",
@@ -34,7 +34,7 @@ exports.seed = function(knex) {
         },
 
         {
-          // id: "uuid",
+          id: 3,
           role: "operator",
           firstName: "Dina",
           lastName: "Rose",

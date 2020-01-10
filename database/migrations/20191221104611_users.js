@@ -1,7 +1,7 @@
 exports.up = function(knex) {
   return knex.schema
     .createTable("users", users => {
-      users.string("uuid");
+      users.increments();
 
       users.string("role").notNullable();
       users.string("firstName").notNullable();
@@ -18,7 +18,7 @@ exports.up = function(knex) {
       users.string("location_lon");
     })
     .createTable("role", tbl => {
-      tbl.string("uuid");
+      tbl.increments();
 
       tbl
         .string("username", 128)
@@ -28,7 +28,7 @@ exports.up = function(knex) {
     })
     .createTable("users_role", tbl => {
       tbl
-        .string("role_id")
+        .integer("role_id")
         .unsigned()
         .notNullable()
         .references("id")

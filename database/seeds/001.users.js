@@ -13,7 +13,7 @@ exports.seed = function(knex) {
           username: "bill",
           email: "bill@gmail.com",
           password: "password",
-          favoriteTrucks: "Taco",
+          favoriteTruck: "Taco",
           businessName: "xyz inc",
           location_lat: "123456",
           location_lon: "1234567"

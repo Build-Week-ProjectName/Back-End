@@ -9,7 +9,7 @@ exports.seed = function(knex) {
           id: 1,
           role: "operator",
           firstName: "bill",
-          LastName: "smith",
+          lastName: "smith",
           username: "bill",
           email: "bill@gmail.com",
           password: "password",

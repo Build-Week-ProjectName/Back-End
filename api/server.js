@@ -8,7 +8,7 @@ const cors = require("cors");
 const server = express();
 
 const authRouter = require("../auth/auth-router.js");
-const auth = require("../auth/restricted-middleware");
+// const authenticate = require("../auth/restricted-middleware");
 const usersRouter = require("../users/users-router.js");
 const menuRouter = require("../menu/menu-router");
 const trucksRouter = require("../trucks/trucks-router");

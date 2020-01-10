@@ -3,13 +3,19 @@ exports.up = function(knex) {
     .createTable("users", users => {
       users.increments();
 
+      users.string("role").notNullable();
+      users.string("firstName").notNullable();
+      users.string("lastName").notNullable();
       users
         .string("username", 128)
         .notNullable()
         .unique();
       users.string("email", 300).notNullable();
       users.string("password", 128).notNullable();
-      users.string("role").notNullable();
+      users.string("favoriteTruck");
+      users.string("businessName");
+      users.string("location_lat");
+      users.string("location_lon");
     })
     .createTable("role", tbl => {
       tbl.increments();

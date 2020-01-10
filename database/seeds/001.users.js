@@ -6,7 +6,7 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex("users").insert([
         {
-          id: 1,
+          // id: 1,
           role: "operator",
           firstName: "bill",
           lastName: "smith",
@@ -17,28 +17,35 @@ exports.seed = function(knex) {
           businessName: "xyz inc",
           location_lat: "123456",
           location_lon: "1234567"
+        },
+
+        {
+          // id: ,
+          role: "diner",
+          firstName: "Tom",
+          lastName: "Jones",
+          username: "tom",
+          email: "tj@gmail.com",
+          password: "password",
+          favoriteTruck: "Taco and More",
+          businessName: "0987 inc",
+          location_lat: "12345657",
+          location_lon: "12345675"
+        },
+
+        {
+          // id: "uuid",
+          role: "operator",
+          firstName: "Dina",
+          lastName: "Rose",
+          username: "dina",
+          email: "dina@gmail.com",
+          password: "password",
+          favoriteTruck: "Taco Shack",
+          businessName: "xyz inc",
+          location_lat: "123456",
+          location_lon: "1234567"
         }
-        // {
-        //   id: 2,
-        //   username: "tom",
-        //   password: "password",
-        //   email: "tom@gmail.com",
-        //   role: "diner"
-        // },
-        // {
-        //   id: 3,
-        //   username: "jack",
-        //   password: "password",
-        //   email: "operator@gmail.com",
-        //   role: "operator"
-        // },
-        // {
-        //   id: 4,
-        //   username: "dino",
-        //   password: "password",
-        //   email: "diner@gmail.com",
-        //   role: "diner"
-        // }
       ]);
     });
 };

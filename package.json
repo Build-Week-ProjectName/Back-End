@@ -9,6 +9,9 @@
     "server": "nodemon index.js",
     "docs": "apidoc -i ./ -e node_modules -o ./docs"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Build-Week-FoodTruck-TrackR2/Back-End.git"
@@ -44,9 +47,6 @@
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
     "supertest": "^4.0.2"
-  },
-  "jest": {
-    "testEnvirnoment": "node"
   },
   "engines": {
     "node": "8.11.4"

@@ -1,4 +1,4 @@
-const db = require("../config/dbConfig");
+const db = require("../database/dbConfig");
 const menu = require("./menu-router");
 const menuModel = require("./menu-model");
 const request = require("supertest");

@@ -8,7 +8,7 @@ const cors = require("cors");
 const server = express();
 
 const authRouter = require("../auth/auth-router.js");
-// const authenticate = require("../auth/restricted-middleware");
+const authenticate = require("../auth/restricted-middleware");
 const usersRouter = require("../users/users-router.js");
 const menuRouter = require("../menu/menu-router");
 const trucksRouter = require("../trucks/trucks-router");
@@ -25,7 +25,7 @@ server.use("/docs", express.static("./docs"));
 server.use("/api/auth", authRouter);
 server.use("/api/users", usersRouter);
 server.use("/api/menu", menuRouter);
-server.use("/api/trucks", trucksRouter);
+server.use("/api/trucks", authenticate, trucksRouter);
 server.use("/api/reviews", reviewsRouter);
 server.use("/api/operator", operatorRouter);
 

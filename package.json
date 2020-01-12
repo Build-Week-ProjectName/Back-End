@@ -4,7 +4,7 @@
   "description": "Backend for FoodTrucker Project",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env DB_ENV=testing jest --watch",
+    "test": "cross-env NODE_ENV=testing jest --watch --verbose",
     "start": "node index.js",
     "server": "nodemon index.js",
     "docs": "apidoc -i ./ -e node_modules -o ./docs"
@@ -39,10 +39,10 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "pg": "^7.15.1",
-    "uuid": "^3.3.3"
+    "uuid": "^3.3.3",
+    "sqlite3": "^4.1.1"
   },
   "devDependencies": {
-    "sqlite3": "^4.1.1",
     "cross-env": "^6.0.3",
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",

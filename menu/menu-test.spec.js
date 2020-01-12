@@ -1,6 +1,4 @@
-const db = require("../database/dbConfig");
-const menu = require("./menu-router");
-const menuModel = require("./menu-model");
+const db = require("../config/dbConfig");
 const request = require("supertest");
 const server = require("../api/server");
 
@@ -12,14 +10,27 @@ describe("menu-model.js", () => {
   describe("inserts menu", () => {
     it("inserts menu into database", async () => {
       const menuModel = await db("menu");
-      expect("menuModel").toHaveLength(3);
+      expect(menuModel).toHaveLength(0);
     });
   });
 });
 
-describe("GET /menu", () => {
-  it("it should return data in json format", async () => {
-    const response = await request(server).get("/api/menu");
-    expect(getType(response)).toBe("object");
+describe("GET /api/menu/", function() {
+  it("all menu", function(done) {
+    request(server)
+      .get("/api/menu/")
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(200, done);
+  });
+});
+
+describe("GET /api/menu/:id", function() {
+  it("get a single menu", function(done) {
+    request(server)
+      .get("/api/menu/1")
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(200, done);
   });
 });

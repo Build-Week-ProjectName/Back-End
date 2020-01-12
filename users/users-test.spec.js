@@ -1,27 +1,19 @@
 const db = require("../config/dbConfig");
 const request = require("supertest");
 const server = require("../api/server");
-const getType = require("jest-get-type");
 
-describe("GET /users", () => {
-  it("it should return data in json format", async () => {
-    const response = await request(server).get("/api/users");
-    expect(getType(response)).toBe("object");
-  });
-});
-
-describe("GET /users", function() {
+describe("GET /api/users", function() {
   it("responds with json", function(done) {
-    request(app)
-      .get("/users")
-      .auth("username", "password")
-      .set("Accept", "application/json")
+    request(server)
+      .get("/api/users")
+      .auth("username", "password", "email", "role", "firstName", "lastName")
+      .set("accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200, done);
   });
 });
 
-describe("GET /users/:id", function() {
+describe("GET /api/users/:id", function() {
   it("respond with json containing a single user", function(done) {
     request(server)
       .get("/api/users/3")
@@ -31,22 +23,22 @@ describe("GET /users/:id", function() {
   });
 });
 
-describe("POST /register", () => {
+describe("POST /api/auth/register", () => {
   beforeEach(async () => {
     await db("user").truncate();
   });
 
-  it("should save new user name to database", async () => {
-    const newUsers = await request(server)
-      .post("/api/register")
-      .send({ username: "jackbird", password: "password", role: "operator" });
-    expect(newUsers.body.username).toMatch("jackbird");
-  });
-
-  it("should return a status of 201", async () => {
+  it("should return a status of 200", async () => {
     const response = await request(server)
-      .post("/api/register")
-      .send({ username: "Joe", password: "123Go", role: "diner" });
-    expect(response.status).toBe(201);
+      .get("/api/auth/register")
+      .send({
+        username: "Joe",
+        password: "123Go",
+        role: "diner",
+        email: "joe@gmail.com",
+        firstName: "Joe",
+        lastName: "Bo"
+      });
+    expect(response.status).toBe(200);
   });
 });

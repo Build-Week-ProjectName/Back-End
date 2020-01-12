@@ -47,5 +47,8 @@
   },
   "jest": {
     "testEnvirnoment": "node"
+  },
+  "engines": {
+    "node": "8.11.4"
   }
 }

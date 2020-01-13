@@ -39,12 +39,15 @@ function findById(id) {
     .where({ id })
     .first();
 }
-
 async function add(truck) {
   const [id] = await db("trucks").insert(truck);
 
   return findById(id);
 }
+
+// function add(truck) {
+//   return db("trucks").insert(truck);
+// }
 
 function update(id, changes) {
   return db("trucks")

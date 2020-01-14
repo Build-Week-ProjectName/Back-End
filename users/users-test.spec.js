@@ -37,7 +37,7 @@ describe("POST /api/auth/register", () => {
         role: "diner",
         email: "joe@gmail.com",
         firstName: "Joe",
-        lastName: "Bo"
+        lastName: "Boss"
       });
     expect(response.status).toBe(200);
   });

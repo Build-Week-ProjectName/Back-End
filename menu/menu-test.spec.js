@@ -25,12 +25,12 @@ describe("GET /api/menu/", function() {
   });
 });
 
-describe("GET /api/menu/:id", function() {
-  it("get a single menu", function(done) {
-    request(server)
-      .get("/api/menu/1")
-      .set("Accept", "application/json")
-      .expect("Content-Type", /json/)
-      .expect(200, done);
-  });
-});
+// describe("GET /api/menu/:id", function() {
+//   it("get a single menu", function(done) {
+//     request(server)
+//       .get("/api/menu/2")
+//       .set("Accept", "application/json")
+//       .expect("Content-Type", /json/)
+//       .expect(200, done);
+//   });
+// });
